@@ -80,6 +80,14 @@ $SystemLogRateLimitInterval <%= node['rsyslog']['rate_limit_interval'] %>
 #
 $SystemLogRateLimitBurst <%= node['rsyslog']['rate_limit_burst'] %>
 <% end %>
+
+<% if node['rsyslog']['extra_config_dir'] -%>
+#
+# Extra configuration files for rsyslog
+# 
+$IncludeConfig <%= node['rsyslog']['extra_config_dir'] %>/*.conf
+<% end %>
+
 #
 # Include all config files in <%= node['rsyslog']['config_prefix'] %>/rsyslog.d/
 #
